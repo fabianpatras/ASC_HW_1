@@ -55,18 +55,12 @@ class Consumer(Thread):
                     for _ in range(quantity):
                         while not self.marketplace.add_to_cart(crt_cart_id, product):
                             sleep(self.retry_wait_time)
-                            # print(self.name, "incerc sa bag", sep=" ")
                 elif comm_type == "remove":
                     for _ in range(quantity):
-                        # while not self.marketplace.remove_from_cart(crt_cart_id, product):
-                        #     sleep(self.retry_wait_time)
-                        #     print(self.name, "incerc sa scot", sep=" ")
                         while not self.marketplace.remove_from_cart(crt_cart_id, product):
                             sleep(self.retry_wait_time)
-                            # print(self.name, "incerc sa scot", sep=" ")
 
             # here the cart is finished
-
             items = self.marketplace.place_order(crt_cart_id)
 
             for itm in items[::-1]:
